@@ -1,14 +1,31 @@
+
 \header {
-  title = "Untitled"
-  composer = "Composer"
+  title = "test"
+  composer = "xaxax"
 }
+music = \relative c,, {
+  ees4 fes geses ges
+  aes4 beses bes ces 
+  des4 eeses ees fes
+  ges4 aeses aes bes ||
+}
+\makeDefaultStringTuning #'bass-tuning \stringTuning <ees,, aes,, des, ges,>
 
-\score {
-  \relative c' {
-    \tempo "" 8 = 96
-    c4 d e f g 
+<<
+  \new Staff {
+    \clef "bass_8"
+    \key c \minor
+    \time 4/4
+    \music
+
   }
-
-  \layout {}
-  \midi {}
-}
+  \new TabStaff \with {
+    %tablatureFormat = #fret-letter-tablature-format
+     stringTunings = #bass-tuning
+  }
+  {
+    \music
+  }
+>>
+\layout { }
+\midi { }
